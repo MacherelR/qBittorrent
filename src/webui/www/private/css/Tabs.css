@@ -24,7 +24,7 @@ Required by:
 
 .tab-menu {
     display: flex;
-    font-size: 11px;
+    font-size: 12px;
     list-style-type: none;
     overflow-x: auto;
     padding: 0;
@@ -43,26 +43,33 @@ Required by:
 
 .tab-menu li a {
     align-items: center;
-    background-color: var(--color-background-default);
-    border-radius: 3px 3px 0 0;
-    color: var(--color-text-default);
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    color: var(--color-text-disabled);
     display: flex;
     gap: 5px;
-    margin-left: 6px;
-    padding: 5px 7px 3px;
+    margin-left: 0;
+    padding: 5px 12px;
     text-align: center;
+    transition:
+        color 0.15s ease,
+        border-color 0.15s ease,
+        background-color 0.15s ease;
 }
 
 .tab-menu li:first-child a {
-    margin-left: 4px;
+    margin-left: 0;
 }
 
 .tab-menu li:hover a {
     background-color: var(--color-background-hover);
+    border-bottom-color: transparent;
     color: var(--color-text-white);
 }
 
 .tab-menu li.selected a {
-    background-color: var(--color-background-blue);
-    color: var(--color-text-white);
+    background-color: transparent;
+    border-bottom: 2px solid var(--color-accent-blue);
+    color: var(--color-text-default);
 }

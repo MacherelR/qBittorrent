@@ -1,6 +1,6 @@
 /*
 
-Core.css for Mocha UI
+Layout.css for Mocha UI
 
 Theme: Default
 
@@ -19,16 +19,21 @@ Required by:
 ---------------------------------------------------------------- */
 
 #desktop {
-    cursor: default; /* Fix for issue in IE7. IE7 wants to use the I-bar text cursor */
+    cursor: default;
     height: 100%;
     min-height: 100%;
-    min-width: 400px; /* Helps keep header content from wrapping */
+    min-width: 400px;
     overflow: hidden;
     position: relative;
 }
 
 #topNav {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        Arial,
+        sans-serif;
     font-size: 10px;
     padding: 13px 10px 0 0;
     position: absolute;
@@ -45,11 +50,12 @@ Required by:
     text-decoration: none;
 }
 
-/* Navbar */
+/* Navbar – slim flat app menu bar */
 
 #desktopNavbar {
-    background-color: var(--color-background-default);
-    overflow: hidden; /* Remove this line if you want the menu to be backward compatible with Firefox 2 */
+    background-color: var(--color-background-primary);
+    border-bottom: 1px solid var(--color-border-default);
+    overflow: visible;
 }
 
 #desktopNavbar ul {
@@ -69,7 +75,7 @@ Required by:
 
 #desktopNavbar ul li a {
     color: var(--color-text-default);
-    font-weight: normal;
+    font-weight: 400;
     padding: 4px 10px;
 }
 
@@ -96,9 +102,13 @@ Required by:
 }
 
 #desktopNavbar li ul {
-    background-color: var(--color-background-default);
+    background-color: var(--color-background-popup);
     border: 1px solid var(--color-border-default);
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 30%);
     left: -999em;
+    overflow: hidden;
+    padding: 3px;
     position: absolute;
     z-index: 8000;
 }
@@ -128,10 +138,11 @@ Required by:
 
 #desktopNavbar li ul li a,
 #desktopNavbar li ul li div.anchor {
+    border-radius: 4px;
     color: var(--color-text-default);
     font-weight: normal;
     min-width: 155px;
-    padding: 4px 10px 4px 23px;
+    padding: 5px 12px 5px 23px;
     position: relative;
 }
 
@@ -158,14 +169,14 @@ Required by:
 
 li.divider {
     border-top: 1px solid var(--color-border-default);
-    margin-top: 2px;
+    margin-top: 3px;
     padding-top: 3px;
 }
 
 #pageWrapper {
     border-bottom: 1px solid var(--color-border-default);
     border-top: 1px solid var(--color-border-default);
-    overflow: hidden; /* This can be set to hidden or auto */
+    overflow: hidden;
     position: relative;
 }
 
@@ -173,9 +184,10 @@ li.divider {
     height: 28px;
 }
 
-/* Footer */
+/* Footer – VS Code-style blue status bar */
 
 #desktopFooterWrapper {
+    background-color: var(--color-accent-blue);
     bottom: 0;
     height: 28px;
     left: 0;
@@ -185,10 +197,16 @@ li.divider {
 }
 
 #desktopFooter {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        Arial,
+        sans-serif;
     font-size: 11px;
     height: 28px;
-    padding: 2px;
+    padding: 2px 4px;
 }
 
 /* Panel Layout
@@ -198,7 +216,7 @@ li.divider {
 
 .column {
     float: left;
-    overflow: hidden; /* Required by IE6 */
+    overflow: hidden;
     position: relative;
 }
 
@@ -277,14 +295,22 @@ li.divider {
 }
 
 .columnHandle {
-    background: url("../images/handle-icon.svg") center center no-repeat;
-    border: 1px solid var(--color-border-default);
-    border-bottom: 0;
-    border-top: 0;
+    background-color: var(--color-background-default);
+    background-image: url("../images/handle-icon.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 0;
+    border-left: 1px solid var(--color-border-default);
+    border-right: 1px solid var(--color-border-default);
     float: left;
     min-height: 10px;
     overflow: hidden;
-    width: 8px;
+    transition: background-color 0.15s ease;
+    width: 5px;
+}
+
+.columnHandle:hover {
+    background-color: var(--color-accent-blue);
 }
 
 /* Toolboxes */
@@ -310,10 +336,14 @@ div.toolbox.divider {
 
 .iconWrapper {
     border: 1px solid transparent;
+    border-radius: 4px;
     display: inline-block;
     height: 22px;
     min-width: 22px;
     overflow: hidden;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
 }
 
 * html .iconWrapper {
@@ -328,8 +358,9 @@ div.toolbox.divider {
 }
 
 .iconWrapper:hover {
-    border: 1px solid #a0a0a0;
-    border-radius: 3px;
+    background-color: var(--color-background-hover);
+    border: 1px solid var(--color-border-default);
+    border-radius: 4px;
 }
 
 #spinner {
@@ -340,8 +371,9 @@ div.toolbox.divider {
 }
 
 #desktopFooter td {
+    color: #ffffff;
     text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 td.speedLabel {
@@ -350,9 +382,16 @@ td.speedLabel {
 }
 
 #freeSpaceOnDisk {
+    color: #ffffff;
     white-space: nowrap;
 }
 
 #DHTNodes {
+    color: #ffffff;
     white-space: nowrap;
+}
+
+/* status bar: span IDs (DlInfos, UpInfos, etc.) */
+#desktopFooter span {
+    color: #ffffff;
 }

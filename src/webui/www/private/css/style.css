@@ -1,31 +1,31 @@
 /* Adaptive color palette */
 
-/* Default rules */
+/* Light mode defaults */
 :root {
-    --color-accent-blue: hsl(210deg 65% 55%);
-    --color-text-blue: hsl(210deg 100% 55%);
-    --color-text-orange: hsl(26deg 100% 45%);
-    --color-text-red: hsl(0deg 100% 65%);
-    --color-text-green: hsl(110deg 94% 27%);
-    --color-text-white: hsl(0deg 0% 100%);
-    --color-text-disabled: hsl(0deg 0% 60%);
-    --color-text-default: hsl(0deg 0% 33%);
-    --color-background-primary: hsl(0deg 0% 100%);
-    --color-background-blue: hsl(210deg 65% 55%);
-    --color-background-popup: hsl(0deg 0% 100%);
-    --color-background-default: hsl(0deg 0% 94%);
-    --color-background-hover: hsl(26deg 80% 60%);
-    --color-border-blue: hsl(210deg 42% 48%);
-    --color-border-default: hsl(0deg 0% 85%);
+    --color-accent-blue: #0078d4;
+    --color-text-blue: #0078d4;
+    --color-text-orange: #b26617;
+    --color-text-red: #cc0000;
+    --color-text-green: #107c10;
+    --color-text-white: #ffffff;
+    --color-text-disabled: #999999;
+    --color-text-default: #1f1f1f;
+    --color-background-primary: #ffffff;
+    --color-background-blue: #0078d4;
+    --color-background-popup: #ffffff;
+    --color-background-default: #f3f3f3;
+    --color-background-hover: #0078d4;
+    --color-border-blue: #0078d4;
+    --color-border-default: #d4d4d4;
     --color-icon-hover: brightness(0) invert(100%) sepia(100%) saturate(0%)
         hue-rotate(108deg) brightness(104%) contrast(104%);
 
     & #torrentTrackersTableDiv tr {
-        --color-tracker-disabled: hsl(240deg 4% 46%);
-        --color-tracker-not-contacted: hsl(32deg 95% 44%);
-        --color-tracker-working: hsl(142deg 76% 36%);
-        --color-tracker-updating: hsl(210deg 100% 55%);
-        --color-tracker-not-working: hsl(0deg 100% 65%);
+        --color-tracker-disabled: #767676;
+        --color-tracker-not-contacted: #b26617;
+        --color-tracker-working: #107c10;
+        --color-tracker-updating: #0078d4;
+        --color-tracker-not-working: #cc0000;
     }
 
     &:not(.dark) {
@@ -33,23 +33,27 @@
     }
 
     &.dark {
-        --color-accent-blue: hsl(210deg 42% 48%);
-        --color-text-blue: hsl(210deg 88.1% 73.5%);
-        --color-text-orange: hsl(26deg 65% 70%);
-        --color-text-default: hsl(0deg 0% 90%);
-        --color-background-primary: hsl(0deg 0% 7%);
-        --color-background-blue: hsl(210deg 42% 48%);
-        --color-background-popup: hsl(0deg 0% 20%);
-        --color-background-default: hsl(0deg 0% 25%);
-        --color-background-hover: hsl(26deg 50% 55%);
-        --color-border-default: hsl(0deg 0% 33%);
+        --color-accent-blue: #007acc;
+        --color-text-blue: #9cdcfe;
+        --color-text-orange: #ce9178;
+        --color-text-red: #f44747;
+        --color-text-green: #4ec9b0;
+        --color-text-default: #cccccc;
+        --color-background-primary: #1e1e1e;
+        --color-background-blue: #094771;
+        --color-background-popup: #252526;
+        --color-background-default: #252526;
+        --color-background-hover: #37373d;
+        --color-border-default: #3e3e42;
+        --color-border-blue: #007acc;
+        --color-text-disabled: #6d6d6d;
 
         & #torrentTrackersTableDiv tr {
-            --color-tracker-disabled: hsl(240deg 6% 83%);
-            --color-tracker-not-contacted: hsl(39deg 100% 72%);
-            --color-tracker-working: hsl(142deg 69% 58%);
-            --color-tracker-updating: hsl(210deg 88.1% 73.5%);
-            --color-tracker-not-working: hsl(0deg 100% 71%);
+            --color-tracker-disabled: #858585;
+            --color-tracker-not-contacted: #d7ba7d;
+            --color-tracker-working: #4ec9b0;
+            --color-tracker-updating: #9cdcfe;
+            --color-tracker-not-working: #f44747;
         }
 
         color-scheme: dark;
@@ -116,14 +120,25 @@ input[type="button"],
 button,
 textarea,
 select {
+    background-color: var(--color-background-primary);
     border: 1px solid var(--color-border-default);
-    border-radius: 3px;
+    border-radius: 4px;
     color: var(--color-text-default);
-    padding: 3px;
+    padding: 3px 6px;
+    transition: border-color 0.15s ease;
+}
+
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--color-accent-blue);
+    outline: none;
 }
 
 select {
-    padding: 4px;
+    padding: 4px 6px;
 }
 
 input[type="checkbox"],
@@ -140,12 +155,13 @@ input[type="button"],
 input[type="submit"],
 button {
     cursor: pointer;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 button:disabled {
     cursor: initial;
+    opacity: 0.5;
 }
 
 :focus {
@@ -157,7 +173,13 @@ button:disabled {
 body {
     background-color: var(--color-background-primary);
     color: var(--color-text-default);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        "Liberation Sans",
+        Arial,
+        sans-serif;
     font-size: 12px;
     line-height: 1.5;
     text-align: left;
@@ -188,30 +210,32 @@ h2,
 h3,
 h4 {
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 600;
     padding: 0 0 5px;
 }
 
 h2 {
     color: var(--color-text-default);
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 #mochaPage h3 {
     border-bottom: 1px solid var(--color-border-default);
     display: block;
-    font-size: 12px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
     margin: 0 0 8px;
     padding: 6px 0;
+    text-transform: uppercase;
 }
 
 #error_div,
 #rename_error {
     color: var(--color-text-red);
     float: left;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 h4 {
@@ -219,7 +243,7 @@ h4 {
 }
 
 a {
-    color: var(--color-text-orange);
+    color: var(--color-text-blue);
     cursor: pointer;
     text-decoration: none;
 }
@@ -235,7 +259,7 @@ p {
 /* List Elements */
 
 dt {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 dd {
@@ -246,7 +270,7 @@ dd {
 
 fieldset {
     border: 1px solid var(--color-border-default);
-    border-radius: 1px;
+    border-radius: 4px;
     margin: 0 2px;
 }
 
@@ -255,9 +279,11 @@ fieldset {
 pre {
     background-color: var(--color-background-default);
     border: 1px solid var(--color-border-default);
+    border-radius: 4px;
     color: var(--color-text-green);
     display: block;
-    font-family: "Courier New", Courier, monospace;
+    font-family:
+        "Cascadia Code", "Fira Code", Consolas, "Courier New", monospace;
     font-size: 11px;
     margin: 0 0 10px;
     max-height: 250px;
@@ -268,7 +294,7 @@ pre {
 /* Dividers */
 
 hr {
-    background-color: var(--color-background-default);
+    background-color: var(--color-border-default);
     border: 0;
     color: var(--color-text-default);
     height: 1px;
@@ -301,14 +327,23 @@ hr {
 }
 
 #properties {
-    background-color: var(--color-background-default);
+    background-color: var(--color-background-primary);
 }
 
 a.propButton {
-    border: 1px solid rgb(85 81 91);
+    border: 1px solid var(--color-border-default);
+    border-radius: 4px;
     margin-left: 3px;
     margin-right: 3px;
-    padding: 2px;
+    padding: 2px 4px;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+a.propButton:hover {
+    background-color: var(--color-background-hover);
+    border-color: var(--color-border-default);
 }
 
 a.propButton img {
@@ -330,14 +365,17 @@ a.propButton img {
 /* context menu specific */
 
 .contextMenu {
-    background-color: var(--color-background-default);
+    background-color: var(--color-background-popup);
     border: 1px solid var(--color-border-default);
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 30%);
     display: none;
     opacity: 0;
-    padding: 0;
+    overflow: hidden;
+    padding: 3px;
     transition:
-        opacity 0.2s ease-in-out,
-        visibility 0.2s ease-in-out;
+        opacity 0.15s ease,
+        visibility 0.15s ease;
     visibility: hidden;
 }
 
@@ -348,13 +386,16 @@ a.propButton img {
 
 .contextMenu .separator {
     border-top: 1px solid var(--color-border-default);
+    margin: 3px 0;
 }
 
 .contextMenu .separatorBottom {
     border-bottom: 1px solid var(--color-border-default);
+    margin: 0 0 3px;
 }
 
 .contextMenu li {
+    border-radius: 4px;
     padding: 0;
     user-select: none;
 }
@@ -362,7 +403,7 @@ a.propButton img {
 .contextMenu li.disabled {
     background-color: transparent;
     cursor: default;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .contextMenu li.disabled a {
@@ -371,10 +412,11 @@ a.propButton img {
 
 .contextMenu li a {
     align-items: center;
+    border-radius: 4px;
     color: var(--color-text-default);
     display: flex;
-    gap: 2px;
-    padding: 5px 20px 5px 5px;
+    gap: 4px;
+    padding: 5px 24px 5px 8px;
     position: relative;
     text-decoration: none;
     white-space: nowrap;
@@ -390,11 +432,14 @@ a.propButton img {
 }
 
 .contextMenu li ul {
-    background: var(--color-background-default);
+    background: var(--color-background-popup);
     border: 1px solid var(--color-border-default);
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 30%);
     left: -999em;
     margin: -29px 0 0 100%;
-    padding: 0;
+    overflow: hidden;
+    padding: 3px;
     position: absolute;
     width: max-content;
     z-index: 8000;
@@ -411,7 +456,7 @@ a.propButton img {
     display: inline-block;
     padding: 2px;
     position: absolute;
-    right: 6px;
+    right: 8px;
     top: 50%;
     transform: rotate(-45deg) translateY(-50%);
 }
@@ -423,7 +468,7 @@ a.propButton img {
 
 .contextMenu li img {
     height: 16px;
-    margin-right: 0.5em;
+    margin-right: 4px;
     width: 16px;
 }
 
@@ -439,14 +484,14 @@ a.propButton img {
 }
 
 #contextCategoryList img.highlightedCategoryIcon {
-    background-color: hsl(213deg 94% 86%);
+    background-color: hsl(213deg 94% 86% / 30%);
 }
 
 /* Sliders */
 
 .slider {
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 600;
     margin: 4px;
     position: relative;
 }
@@ -456,24 +501,42 @@ a.propButton img {
 }
 
 .mochaToolButton {
-    margin-right: 10px;
+    margin-right: 8px;
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+}
+
+a:hover .mochaToolButton {
+    opacity: 1;
 }
 
 /* Mocha Customization */
 
 #mochaToolbar {
     height: auto !important;
-    margin-top: 5px;
+    margin-top: 4px;
     overflow-y: hidden;
     position: relative;
 }
 
 #mochaToolbar .divider {
-    background-image: url("../images/toolbox-divider.svg");
-    background-position: left center;
-    background-repeat: no-repeat;
-    padding-left: 14px;
+    background-image: none;
+    border-left: 1px solid var(--color-border-default);
+    margin-left: 4px;
+    padding-left: 10px;
     padding-top: 15px;
+}
+
+#mochaToolbar a:has(> .mochaToolButton) {
+    align-items: center;
+    border-radius: 4px;
+    display: inline-flex;
+    padding: 2px 3px;
+    transition: background-color 0.15s ease;
+}
+
+#mochaToolbar a:has(> .mochaToolButton):hover {
+    background-color: var(--color-background-hover);
 }
 
 .MyMenuIcon {
@@ -482,7 +545,7 @@ a.propButton img {
 
 #mainWindowTabs {
     float: right;
-    margin: 4px 5px 0 0;
+    margin: 2px 5px 0 0;
 }
 
 #torrentsFilterToolbar {
@@ -497,13 +560,18 @@ a.propButton img {
 #torrentsFilterInput {
     background-color: var(--color-background-default);
     background-image: url("../images/edit-find.svg");
-    background-position: 2px;
+    background-position: 6px center;
     background-repeat: no-repeat;
-    background-size: 1.5em;
+    background-size: 14px;
     border: 1px solid var(--color-border-default);
-    border-radius: 3px;
-    min-width: 170px;
-    padding: 2px 2px 2px 25px;
+    border-radius: 4px;
+    min-width: 180px;
+    padding: 3px 6px 3px 26px;
+    transition: border-color 0.15s ease;
+}
+
+#torrentsFilterInput:focus {
+    border-color: var(--color-accent-blue);
 }
 
 #torrentsFilterRegexBox {
@@ -514,14 +582,22 @@ a.propButton img {
     background-image: url("../images/regex.svg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 1.5em;
+    background-size: 14px;
     border: 1px solid var(--color-border-default);
     border-radius: 4px;
     cursor: pointer;
     display: inline-block;
     height: 26px;
     margin-bottom: -9px;
+    transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease;
     width: 26px;
+}
+
+#torrentsFilterRegexBox + label:hover {
+    background-color: var(--color-background-hover);
+    border-color: var(--color-accent-blue);
 }
 
 #torrentsFilterRegexBox:checked + label {
@@ -529,7 +605,7 @@ a.propButton img {
     background-image: url("../images/regex.svg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 1.5em;
+    background-size: 14px;
     border: 1px solid var(--color-accent-blue);
     border-radius: 4px;
     display: inline-block;
@@ -539,7 +615,7 @@ a.propButton img {
 }
 
 #torrentsFilterSelect {
-    padding: 2px 4px;
+    padding: 2px 6px;
 }
 
 #torrentFilesFilterToolbar {
@@ -549,25 +625,29 @@ a.propButton img {
 
 #torrentFilesFilterInput {
     background-image: url("../images/edit-find.svg");
-    background-position: 1px;
+    background-position: 6px center;
     background-repeat: no-repeat;
-    background-size: 1.5em;
+    background-size: 14px;
     margin-top: -1px;
     padding-bottom: 1px;
-    padding-left: 2em;
+    padding-left: 26px;
     padding-top: 1px;
     width: 190px;
 }
 
 fieldset.settings {
     border: 1px solid var(--color-border-default);
-    padding: 4px 4px 6px 6px;
+    border-radius: 4px;
+    padding: 4px 8px 8px;
 }
 
 fieldset.settings legend {
-    font-weight: bold;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     margin-left: 8px;
     padding: 4px;
+    text-transform: uppercase;
 }
 
 fieldset.settings label {
@@ -584,12 +664,15 @@ div.formRow {
 }
 
 .filterTitle {
+    color: var(--color-text-disabled);
     cursor: pointer;
     display: flex;
-    font-weight: bold;
+    font-size: 10px;
+    font-weight: 700;
     gap: 4px;
+    letter-spacing: 0.08em;
     overflow: hidden;
-    padding: 4px 0 4px 6px;
+    padding: 8px 0 4px 8px;
     text-overflow: ellipsis;
     text-transform: uppercase;
     user-select: none;
@@ -623,11 +706,13 @@ ul.filterList .selectedFilter > .link :is(img, button) {
 
 ul.filterList span.link {
     align-items: center;
+    border-radius: 4px;
     cursor: pointer;
     display: flex;
-    gap: 5px;
+    gap: 6px;
+    margin: 1px 4px;
     overflow: hidden;
-    padding: 4px 6px;
+    padding: 4px 8px;
     white-space: nowrap;
 }
 
@@ -671,11 +756,13 @@ span.link :is(img, button) {
     height: 16px;
     margin-right: -2px;
     padding: 2px;
-    transition: transform 0.3s;
+    transition: transform 0.2s ease;
     width: 16px;
 }
 
 td.generalLabel {
+    color: var(--color-text-disabled);
+    font-size: 11px;
     text-align: right;
     vertical-align: top;
     white-space: nowrap;
@@ -716,7 +803,7 @@ td.noWrap {
 }
 
 #propGeneral {
-    padding: 2px;
+    padding: 4px;
 }
 
 #propBarsWrapper {
@@ -742,12 +829,13 @@ td.noWrap {
 
 #watched_folders_tab td,
 #watched_folders_tab th {
-    border: 1px solid black;
-    padding: 2px 4px;
+    border: 1px solid var(--color-border-default);
+    padding: 4px 6px;
 }
 
 .select-watched-folder-editable {
     border: 1px solid var(--color-border-default);
+    border-radius: 4px;
     height: 22px;
     position: relative;
     width: 160px;
@@ -797,7 +885,14 @@ td.statusBarSeparator {
     background-position: center 1px;
     background-repeat: no-repeat;
     background-size: 2px 18px;
+    filter: brightness(0) invert(1);
+    opacity: 0.35;
     width: 24px;
+}
+
+/* Status bar icons — invert to white on the blue status bar */
+#desktopFooter img {
+    filter: brightness(0) invert(1);
 }
 
 /* Statistics window */
@@ -840,6 +935,7 @@ td.statusBarSeparator {
 
 #searchResults .numSearchResults {
     font-style: italic;
+    opacity: 0.7;
 }
 
 .red {
@@ -874,6 +970,7 @@ td.statusBarSeparator {
 #rememberBtn {
     background: url("../images/object-locked.svg") center center / 24px
         no-repeat var(--color-background-popup);
+    border-radius: 4px;
     height: 38px;
     padding: 4px 6px;
     width: 38px;
@@ -881,6 +978,7 @@ td.statusBarSeparator {
 
 #rememberBtn.disabled {
     filter: grayscale(100%);
+    opacity: 0.4;
 }
 
 #deleteFromDiskCB {
@@ -896,7 +994,7 @@ td.statusBarSeparator {
 .confirmDeletionGrid {
     align-items: center;
     display: grid;
-    gap: 3px 4px;
+    gap: 3px 8px;
     grid-template-columns: max-content 1fr;
     margin-bottom: 10px;
 }
